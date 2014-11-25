@@ -37,6 +37,16 @@
   end
 
   function msg_valid(msg)
+    local allowedchat=false
+    for v,chat in pairs(config.allowed_chats) do 
+        if chat == msg.to.id then 
+          allowedchat=true
+        end
+    end
+    if not allowedchat then
+      print("add "..msg.to.id.." to config.allowed_chats")
+      return false
+    end 
     if msg.text == nil then
       return false
     end
@@ -79,6 +89,14 @@
       end
     end
   end
+
+function string.starts(String,Start)
+  return string.sub(String,1,string.len(Start))==Start
+end
+
+function string.ends(String,End)
+  return End=='' or string.sub(String,-string.len(End))==End
+end
 
   function load_config()
      local f = assert(io.open('./bot/config.json', "r"))
