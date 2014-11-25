@@ -1,15 +1,16 @@
 
 function run(msg, matches)
-  return "Hello, " .. matches[1]
+  if matches[1] == "me" then
+    return "Hello ".. msg.from.first_name .."!"
+  else
+    return "Hello " .. matches[1].."!"
+  end
 end
 
 return {
     description = "Says hello to someone", 
     usage = "say hello to [name]",
-    patterns = {
-    	"^say hello to (.*)$",
-    	"^Say hello to (.*)$"
-    }, 
+    patterns = {"^[s|S]ay hello to (.*)$"}, 
     run = run 
 }
 
