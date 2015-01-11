@@ -35,15 +35,6 @@ function on_binlog_replay_end ()
   load_plugins()
 end
 
-function string.starts(String,Start)
-  return string.sub(String,1,string.len(Start))==Start
-end
-
-function string.ends(String,End)
-  return End=='' or string.sub(String,-string.len(End))==End
-end
-
-
 function msg_valid(msg)
   -- Dont process outgoing messages
   if msg.out then
@@ -56,13 +47,13 @@ function msg_valid(msg)
     return false
   end
   local allowedchat=false
-    for v,chat in pairs(config.allowed_chats) do
+    for v,chat in pairs(_config.allowed_chats) do
         if chat == msg.to.id then
           allowedchat=true
         end
     end
     if not allowedchat then
-      print("add "..msg.to.id.." to config.allowed_chats")
+      print("add "..msg.to.id.." to _config.allowed_chats")
       return false
     end
 end

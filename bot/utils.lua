@@ -76,18 +76,18 @@ end
 function vardump(value, depth, key)
   local linePrefix = ""
   local spaces = ""
-  
+
   if key ~= nil then
     linePrefix = "["..key.."] = "
   end
-  
+
   if depth == nil then
     depth = 0
   else
     depth = depth + 1
     for i=1, depth do spaces = spaces .. "  " end
   end
-  
+
   if type(value) == 'table' then
     mTable = getmetatable(value)
     if mTable == nil then
@@ -95,12 +95,12 @@ function vardump(value, depth, key)
     else
       print(spaces .."(metatable) ")
         value = mTable
-    end		
+    end
     for tableKey, tableValue in pairs(value) do
       vardump(tableValue, depth, tableKey)
     end
-  elseif type(value)	== 'function' or 
-      type(value)	== 'thread' or 
+  elseif type(value)	== 'function' or
+      type(value)	== 'thread' or
       type(value)	== 'userdata' or
       value		== nil
   then
@@ -130,10 +130,10 @@ end
 
 function is_sudo(msg)
    local var = false
-   -- Check users id in config 
-   for v,user in pairs(_config.sudo_users) do 
-      if user == msg.from.id then 
-         var = true 
+   -- Check users id in config
+   for v,user in pairs(_config.sudo_users) do
+      if user == msg.from.id then
+         var = true
       end
    end
    return var
@@ -155,7 +155,7 @@ function plugins_names( )
     -- Ends with .lua
     if (v:match(".lua$")) then
       table.insert(files, v)
-    end 
+    end
   end
   return files
 end
@@ -163,11 +163,11 @@ end
 -- Function name explains what it does.
 function file_exists(name)
   local f = io.open(name,"r")
-  if f ~= nil then 
-    io.close(f) 
-    return true 
-  else 
-    return false 
+  if f ~= nil then
+    io.close(f)
+    return true
+  else
+    return false
   end
 end
 
@@ -185,4 +185,14 @@ end
 -- Retruns true if the string is empty
 function string:isempty()
   return self == nil or self == ''
+end
+
+-- Returns true if the strings starts with start
+function string.starts(String,Start)
+  return string.sub(String,1,string.len(Start))==Start
+end
+
+-- Returns true if the strings ends with end
+function string.ends(String,End)
+  return End=='' or string.sub(String,-string.len(End))==End
 end
