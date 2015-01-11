@@ -5,7 +5,8 @@
 
 -- Globals
 -- If you have a google api key for the geocoding/timezone api
-api_key  = config.google_api_key or nil
+api_key  = nil
+
 base_api = "https://maps.googleapis.com/maps/api"
 dateFormat = "%A %d %B - %H:%M:%S"
 
@@ -36,7 +37,8 @@ function get_latlong(area)
       lat  = data.results[1].geometry.location.lat
       lng  = data.results[1].geometry.location.lng
       acc  = data.results[1].geometry.location_type
-      return lat,lng,acc
+      types= data.results[1].types
+      return lat,lng,acc,types
    end
 end
 

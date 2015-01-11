@@ -1,14 +1,24 @@
+socket = require("socket")
 
-function run(msg, matches)
-    local receiver = get_receiver(msg)
-    print('receiver: '..receiver)
-    return "pong"
+function cron()
+	-- Use yours desired web and id
+	local addr = "www.google.com"
+	local dest = "user#id"..our_id
+    -- Checks a TCP connexion
+    local connexion = socket.connect(addr, 80)
+    if not connexion then 
+    	local text = "ALERT: "..addr.." is offline"
+    	print (text)
+    	send_msg(dest, text, ok_cb, false)
+    else
+        connexion:close()
+    end
 end
 
 return {
-    description = "bot sends pong", 
-    usage = "!ping",
-    patterns = {"^!ping$"}, 
-    run = run 
+    description = "If domain is offline, send msg to peer",
+    usage = "",
+    patterns = {},
+    run = nil,
+    cron = cron
 }
-
