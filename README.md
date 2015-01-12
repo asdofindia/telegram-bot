@@ -20,6 +20,8 @@ Command list
 !uc3m -> Fortunes from Universidad Carlos III
 !get (value_name) -> retrieves variables saved with !set
 say hello to [name] -> Says hello to someone
+!google [terms] -> Searches google and returns results
+!wiki [terms] -> Returns the first paragraph from wikipedia
 !help -> Lists all available commands
 !img [topic] -> search image with Google API and sends it
 !ping -> bot sends pong
@@ -62,4 +64,6 @@ $ ./launch.sh # Will ask you for a phone number & confirmation code.
 
 Contact me
 ------------
-You can contact me [via Telegram](https://telegram.me/yago_perez) but if you have an issue please [open](https://github.com/yagop/telegram-bot/issues) one.
+You can contact the upstream author yagop [via Telegram](https://telegram.me/yago_perez) but if you have an issue please [open](https://github.com/yagop/telegram-bot/issues) one.
+
+To contact the author of this fork, [telegram.me/akshay](https://telegram.me/akshay)
