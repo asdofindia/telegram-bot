@@ -92,6 +92,8 @@ function do_action(msg)
       matches = { string.match(text, pattern) }
       if matches[1] then
         print("  matches", pattern)
+        status_online(ok_cb, false)
+        send_typing(receiver, ok_cb, false)
         if desc.run ~= nil then
           -- If plugin is for privileged user
           if desc.privileged and not is_sudo(msg) then
@@ -118,6 +120,7 @@ function _send_msg( destination, text)
   local len = string.len(text)
   local iterations = math.ceil(len / msg_text_max)
 
+  send_typing_abort(destination, ok_cb, false)
   for i = 1, iterations, 1 do
     local inital_c = i * msg_text_max - msg_text_max
     local final_c = i * msg_text_max
