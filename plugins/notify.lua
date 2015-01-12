@@ -5,7 +5,9 @@ local icon = os.getenv("HOME") .. "/.telegram-cli/t_icon.png"
 
 function get_title (P, Q)
   if (Q.type == 'user') then
-    return P.first_name .. " " .. P.last_name
+    local firstname = P.first_name or ""
+    local lastname = P.last_name or ""
+    return firstname .. " " .. lastname
   elseif (Q.type == 'chat') then
     return Q.title
   elseif (Q.type == 'encr_chat') then
