@@ -66,4 +66,3 @@ Contact me
 ------------
 You can contact the upstream author yagop [via Telegram](https://telegram.me/yago_perez) but if you have an issue please [open](https://github.com/yagop/telegram-bot/issues) one.
 
-To contact the author of this fork, [telegram.me/akshay](https://telegram.me/akshay)
